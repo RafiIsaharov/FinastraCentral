@@ -18,19 +18,6 @@ app.set('port', PORT);
 
 
 app.use(express.static(__dirname + '/public')); 
-app.use(morgan('combined'));
-app.use(snsSubscriptionConfirmation.overrideContentType());
-app.use(bodyParser.json());
-app.use(snsSubscriptionConfirmation.snsConfirmHandler());
-
-app.use('/iotbutton', function(req, res){
-	
-	req.pipe(request('http://iotpay.herokuapp.com/contract/iotbutton')).pipe(res);
-//	request.get("http://iotpay.herokuapp.com/contract/iotbutton").on('response',function(res){
-//		console.log(res.statusCode); // 200
-  //  	console.log(res.headers['content-type']);
-//	})
-});
 
 //routes
 app.use('/*', function(req, res){	    
